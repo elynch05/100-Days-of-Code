@@ -1,0 +1,65 @@
+#Rock Paper Scissors
+import random
+rock = '''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+'''
+
+paper = '''
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+'''
+
+scissors = '''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+'''
+
+score = 0 #initialise score for this round outside of the lopop
+game_images = [rock, paper, scissors]
+while True:
+    user_choice = int(input("What do you choose? type 0 for rock, 1 for paper, 2 for scissors: "))
+    computer_choice = random.randint(0, 2)
+    print(f"You chose: \n {game_images[user_choice]}")
+    print(f"Computer chose: \n {game_images[computer_choice]}")
+
+    if user_choice == 0 and computer_choice == 2:
+        print("You win!")
+        score += 1
+        
+    elif user_choice == 2 and computer_choice == 1:
+        print("You win!")
+        score += 1
+            
+    elif user_choice == 1 and computer_choice == 0:
+        print("You win!")
+        score += 1
+    
+    elif user_choice == 2 and computer_choice == 0:
+        print("Computer wins!")
+
+        
+    elif user_choice == 1 and computer_choice == 2:
+        print("Computer wins!")
+
+            
+    elif user_choice == 0 and computer_choice == 1:
+        print("Computer wins!")
+
+    else:
+        print("It's a draw I think?")
+
+        
+    print(score)
