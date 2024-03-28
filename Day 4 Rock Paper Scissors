@@ -1,5 +1,6 @@
 #Rock Paper Scissors
 import random
+
 rock = '''
     _______
 ---'   ____)
@@ -29,6 +30,7 @@ scissors = '''
 
 score = 0 #initialise score for this round outside of the lopop
 game_images = [rock, paper, scissors]
+
 while True:
     user_choice = int(input("What do you choose? type 0 for rock, 1 for paper, 2 for scissors: "))
     computer_choice = random.randint(0, 2)
@@ -60,6 +62,17 @@ while True:
 
     else:
         print("It's a draw I think?")
+   
+    print(f"Your score currently is {score}")
 
+    #ask if user wants to play again
+    while True:
+        more = input("Would you like to play again? Y/N: ").lower()
+        if more == "y":
+            break
+        elif more == "n":
+            print("Thanks!")
+            exit()
+        else:
+            print("Please only select y or n.")
         
-    print(score)
