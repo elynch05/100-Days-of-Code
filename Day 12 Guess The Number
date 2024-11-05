@@ -1,0 +1,54 @@
+import random
+from art import logo
+
+print(logo)
+
+number_to_guess = random.randint(1, 100)
+def user_guessing():
+    try:
+        user_selects = int(input("Please select a number between 1 and 100: "))
+        return user_selects
+    except ValueError:
+        print("Please make sure you only enter a number")
+
+def number_guessing_game(computers_number):
+    print("I'm thinking of a number between 1 and 100:")
+    guesses_remaining = 0
+    #input conditions
+    while True:
+        difficulty = input("Would you like easy or hard mode?: ").lower()
+        if difficulty == 'easy':
+            guesses_remaining += 10
+            break
+        elif difficulty == 'hard':
+            guesses_remaining += 5
+            break
+        else:
+            print("Please select easy or hard")
+
+    #actually guessing
+    playing = True
+    while playing:
+        print(f"You have {guesses_remaining} guesses left")
+        guess = user_guessing()
+
+        #win condition
+        if guess == computers_number and guesses_remaining > 0:
+            print("You have won the game this time!")
+            break
+
+        #lose a guess when you don't get it right
+        while guess != computers_number and guesses_remaining > 0:
+            #guess too low
+            if guess < computers_number:
+                print("Too Low!")
+            elif guess > computers_number:
+                print("Too High!")
+            guesses_remaining -= 1
+            # losing condition
+            if guesses_remaining == 0:
+                print("You have lost the game!")
+                playing = False
+            break
+
+number_guessing_game(number_to_guess)
